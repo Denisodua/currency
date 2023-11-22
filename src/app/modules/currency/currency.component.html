@@ -1,0 +1,37 @@
+<form [formGroup]="form">
+
+    <select
+        formControlName="firstCurrencySelect"
+        name="firstCurrencySelect"
+        (change)="selectCurrency($event)">
+            <option
+                *ngFor="let cur of currencyArray"
+                label="{{ cur.txt }}"
+                value="{{ cur.rate }}">{{ cur.cc }}</option>
+    </select>
+
+    <input
+        type="text"
+        formControlName="firstCurrencyInput"
+        value="{{ this.total.first | currency: '': ''}}"
+        name="firstInput"
+        (keyup)="inputCurrency($event)">
+
+    <input
+        type="text"
+        formControlName="secondCurrencyInput"
+        value="{{ this.total.second | currency: '': ''}}"
+        name="secondInput"
+        (keyup)="inputCurrency($event)">
+
+    <select
+        formControlName="secondCurrencySelect"
+        name="secondCurrencySelect"
+        (change)="selectCurrency($event)">
+            <option
+                *ngFor="let cur of currencyArray"
+                label="{{ cur.txt }}"
+                value="{{ cur.rate }}">{{ cur.cc }}</option>
+    </select>
+
+</form>
